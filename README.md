@@ -17,7 +17,8 @@ To set up the **Innovation_networks_CN_US** project, follow these instructions:
 
 ### Prerequisites
 
-Ensure you have Python 3.9.19 installed on your system.The system requirements include Red Hat Enterprise Linux 8.4 (Ootpa). 
+Operating system: Red Hat Enterprise Linux 8.4 (Ootpa)
+Python version: 3.9.19.
 
 ### Dependencies
 If you have pip installed, use the following command to install all required packages:
