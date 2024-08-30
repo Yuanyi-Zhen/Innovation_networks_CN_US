@@ -1,4 +1,4 @@
-帮我修改一下下面内容的格式，以使得我可以直接粘贴进入github的Readme文件中# Innovation_networks_CN_US
+# Innovation_networks_CN_US
 
 ## Overview
 
