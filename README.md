@@ -1,36 +1,64 @@
-# Innovation_networks_CN_US
+# Innovation Networks in China and the U.S.
 
-## Overview
+A research repository on how national cultures shape innovation networks and their
+consequences for mobility and cultural diversity.
 
-The **Innovation_networks_CN_US** project is an open-source implementation of the code from the article *Hierarchical Innovation Networks in China Yield More Mobility, but Less Diversity than in the U.S.* This project aims to investigate and model the differences in social network structures between China and the U.S. by constructing ideal types of social structures: *clan-like* structures for China and *club-like* structures for the U.S. 
+<p align="center">
+  <img src="docs/assets/conceptual_framework_cartoon.png" alt="Cartoon conceptual framework linking clan and club small-group structures to macro innovation networks, empirical validation, and mobility outcomes" width="920">
+</p>
 
-Using fractal theory, the project extends these micro-level structures to macro-network models, enabling a comparison of the macro-social network structures between the two countries. The results are validated with empirical data from three domains:
-- **Scientific Collaboration Networks**: Relationships between academic authors.
-- **Patent Inventor Collaboration Networks**: Connections among patent inventors.
-- **Cultural Collaboration Networks**: Collaborations among film writers, directors, and stars.
+Local cultures shape how people organize relationships, build communities, and generate
+new ideas across science, technology, and film. Drawing on theories of Chinese clan-like
+hierarchies and U.S. club-like egalitarian associations, this project examines
+how small-group social forms scale into macro innovation networks and how these networks
+shape social mobility and cultural mobility.
 
-The project also explores the creation and reproduction of social opportunities and the evolution of ideas and artifacts through temporal social networks and large language models.
+## System Requirements
+
+The original analysis environment was tested on:
+
+- Red Hat Enterprise Linux 8.4 (Ootpa)
+- Python 3.9.19
+
+No non-standard hardware is required for the provided scripts, although full-scale analyses
+may require access to the original large datasets and computing environment.
 
 ## Installation
 
-To set up the **Innovation_networks_CN_US** project, follow these instructions:
+Clone the repository and create a clean Python environment:
 
-### Prerequisites
+```bash
+git clone https://github.com/Yuanyi-Zhen/Innovation_networks_CN_US.git
+cd Innovation_networks_CN_US
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-Operating system: Red Hat Enterprise Linux 8.4 (Ootpa)
-Python version: 3.9.19.
+## Data
 
-### Dependencies
-If you have pip installed, use the following command to install all required packages:
+The repository includes 12 processed CSV files in `data/` for inspection:
 
-pip install pandas==1.4.4 numpy==1.22.4 seaborn==0.11.2 matplotlib==3.5.2 scipy==1.7.3 networkx==3.2.1
+| File group | Files |
+| --- | --- |
+| Network features | `science_net.csv`, `technology_net.csv`, `movie_net.csv` |
+| Social mobility | `science_social_mobility.csv`, `technology_social_mobility.csv`, `movie_social_mobility.csv` |
+| Domain cultural mobility | `science_cultural_mobility_domain.csv`, `technology_cultural_mobility_domain.csv`, `movie_cultural_mobility_domain.csv` |
+| Person-level cultural mobility | `science_cultural_mobility_person.csv`, `technology_cultural_mobility_person.csv`, `movie_cultural_mobility_person.csv` |
 
-## Usage
-To generate the figures corresponding to the paper using the Innovation_networks_CN_US project, you will need to run the following scripts:
-python plot_density_combine.py 
-python plot_density_combine.py
-Plotting the Largest Component
+## Code Organization
 
+The scripts are organized around the main analytical steps of the study:
+
+| Scripts | Purpose |
+| --- | --- |
+| `generate_simulation_network.py` | Generates ideal-type clan, club, and random networks. |
+| `network_features.py` | Calculates structural features of empirical and simulated networks. |
+| `social_mob_build_rolling_window_network.py`, `social_mob_analysis.py` | Builds rolling-window collaboration networks and measures changes in network position. |
+| `cultural_mob_specter2_paper_embedding.py`, `cultural_mob_Paecter_patent_embedding.py`, `cultural_mob_openai_movie_embedding.py` | Generates text embeddings for science, patent, and movie records. |
+| `cultural_mob_domain_distance.py`, `cultural_mob_person_across_time_papar_distance.py` | Computes cultural-mobility distances and breadth measures across domains and individuals. |
+| `plot_density_combine.py`, `plot_largest_component.py` | Produces manuscript-style figures from processed analytical outputs. |
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details. 
+
+This project is licensed under the MIT License. See `LICENSE` for details.
